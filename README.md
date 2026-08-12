@@ -56,7 +56,7 @@ This project is split across two repos because they deploy to entirely different
 | Repo | What it is | Where it runs |
 |---|---|---|
 | `g2-vi-en-realtime` (this one) | The glasses app. Vite + TypeScript, packaged into an `.ehpk` bundle. | Installed on your phone via Even Hub |
-| [`g2-relay`](https://github.com/YOUR-USERNAME/g2-relay) | A ~60-line Cloudflare Worker that proxies WebSocket traffic to OpenAI. | Cloudflare's edge, free tier |
+| [`g2-relay`](https://github.com/carlmasters02/g2-relay) | A ~60-line Cloudflare Worker that proxies WebSocket traffic to OpenAI. | Cloudflare's edge, free tier |
 
 > Update that link to your actual relay repo URL before publishing.
 
@@ -94,7 +94,7 @@ The problem was the chunk boundaries. Batch transcription needs a complete audio
 Follow the README in the `g2-relay` repo. In short:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/g2-relay
+git clone https://github.com/carlmasters02/g2-relay
 cd g2-relay
 npm install
 npx wrangler login
@@ -106,14 +106,14 @@ npx wrangler secret put RELAY_SECRET      # the value you just generated
 npx wrangler deploy
 ```
 
-Note the deployed URL — something like `https://g2-relay.YOUR-SUBDOMAIN.workers.dev`. You need both that hostname and the relay secret in the next step.
+Note the deployed URL — something like `https://g2-relay.carlmasters1031.workers.dev`. You need both that hostname and the relay secret in the next step.
 
 Verify the relay reaches OpenAI before continuing. The relay repo includes a `test.js` for this; a healthy run prints `session.created` followed by `session.updated`.
 
 ### 2. Configure this app
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/g2-vi-en-realtime
+git clone https://github.com/carlmasters02/g2-vi-en-realtime
 cd g2-vi-en-realtime
 npm install
 cp .env.example .env.local
@@ -139,7 +139,7 @@ The whitelist takes a bare hostname, no scheme:
 {
   "name": "network",
   "desc": "Stream audio to the translation relay.",
-  "whitelist": ["g2-relay.YOUR-SUBDOMAIN.workers.dev"]
+  "whitelist": ["g2-relay.carlmasters1031.workers.dev"]
 }
 ```
 
