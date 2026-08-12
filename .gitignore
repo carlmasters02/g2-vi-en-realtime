@@ -26,3 +26,4 @@ npm-debug.log*
 
 # KDE / Dolphin per-directory metadata
 .directory
+NOTES.md

@@ -6,6 +6,7 @@ import {
   OsEventTypeList,
 } from '@evenrealities/even_hub_sdk'
 import { startSttStream } from './asr/stt'
+import { installTranscriptUi } from './asr/transcript'
 import { mountUi, setStatus, setTranscript } from './ui'
 
 mountUi()
@@ -15,6 +16,10 @@ if (!API_KEY) {
   setStatus('error', 'VITE_STT_API_KEY not set — copy .env.example to .env.local')
   console.warn('VITE_STT_API_KEY is not set.')
 }
+
+// Save bar for the session transcript. Mounted before the bridge await so it
+// appears even where the bridge never resolves (plain browser, simulator).
+installTranscriptUi()
 
 const bridge = await waitForEvenAppBridge()
 
