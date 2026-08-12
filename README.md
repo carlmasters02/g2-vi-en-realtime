@@ -58,7 +58,6 @@ This project is split across two repos because they deploy to entirely different
 | `g2-vi-en-realtime` (this one) | The glasses app. Vite + TypeScript, packaged into an `.ehpk` bundle. | Installed on your phone via Even Hub |
 | [`g2-relay`](https://github.com/carlmasters02/g2-relay) | A ~60-line Cloudflare Worker that proxies WebSocket traffic to OpenAI. | Cloudflare's edge, free tier |
 
-> Update that link to your actual relay repo URL before publishing.
 
 You need both. This app will not function without a deployed relay — it has no OpenAI credentials of its own, by design. Set up the relay first.
 
