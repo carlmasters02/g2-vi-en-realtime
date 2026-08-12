@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Vite build output — `npm run build` writes here, and `evenhub pack` reads it.
+dist/
+# Vite rewrites a TS config to a temp file next to it while loading.
+vite.config.ts.timestamp-*
+
+# Packed glasses bundles. `npm run pack` writes these to the project root
+# (default name out.ehpk, overridable with -o). They embed dist/, so committing
+# one commits a stale build.
+*.ehpk
+
+# Secrets. .env.local holds VITE_RELAY_SECRET for the Cloudflare Worker relay.
+# .env.example stays tracked so the required variable names are documented.
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+
+# Editors (VS Code and Cursor are both installed on this machine)
+.vscode/
+.cursor/
+
+# KDE / Dolphin per-directory metadata
+.directory
